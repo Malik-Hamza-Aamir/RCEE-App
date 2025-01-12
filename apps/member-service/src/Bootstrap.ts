@@ -5,6 +5,7 @@ import { AppError } from "./shared/AppError";
 import logger from "./shared/logger";
 import dotenv from "dotenv";
 import cors from "cors";
+import { userRouter } from "./routes/userRoutes";
 dotenv.config();
 
 export class Server {
@@ -24,7 +25,7 @@ export class Server {
   }
 
   private setupRoutes() {
-    this.app.get("/api");
+    this.app.get("/api", userRouter);
     this.app.get("/api/health", (req: Request, res: Response) => {
       res.send({ health: "Member Service is Healthy"})
     })
