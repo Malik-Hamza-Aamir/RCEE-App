@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      test:
+        specifier: 'file:'
+        version: 'file:'
     devDependencies:
       prettier:
         specifier: ^3.2.5
@@ -20,6 +24,9 @@ importers:
 
   apps/member-service:
     dependencies:
+      '@repo/types':
+        specifier: workspace:*
+        version: link:../../packages/types
       cors:
         specifier: ^2.8.5
         version: 2.8.5
@@ -31,7 +38,7 @@ importers:
         version: 4.21.2
       member-service:
         specifier: 'file:'
-        version: 'link:'
+        version: file:apps/member-service
       reflect-metadata:
         specifier: ^0.2.2
         version: 0.2.2
@@ -42,6 +49,9 @@ importers:
         specifier: ^3.17.0
         version: 3.17.0
     devDependencies:
+      '@repo/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
       '@types/cors':
         specifier: ^2.8.17
         version: 2.8.17
@@ -100,6 +110,25 @@ importers:
       typescript-eslint:
         specifier: ^8.15.0
         version: 8.15.0(eslint@9.15.0)(typescript@5.5.4)
+
+  packages/types:
+    dependencies:
+      '@repo/types':
+        specifier: 'file:'
+        version: 'link:'
+      types:
+        specifier: 'file:'
+        version: 'link:'
+      zod:
+        specifier: ^3.24.2
+        version: 3.24.2
+    devDependencies:
+      '@types/node':
+        specifier: ^22.13.4
+        version: 22.13.4
+      typescript:
+        specifier: ^5.7.3
+        version: 5.7.3
 
   packages/typescript-config:
     dependencies:
@@ -300,6 +329,9 @@ packages:
 
   '@types/node@22.10.5':
     resolution: {integrity: sha512-F8Q+SeGimwOo86fiovQh8qiXfFEh2/ocYv7tU5pJ3EXMSSxk1Joj5wefpFK2fHTf/N6HKGSxIDBT9f3gCxXPkQ==}
+
+  '@types/node@22.13.4':
+    resolution: {integrity: sha512-ywP2X0DYtX3y08eFVx5fNIw7/uIv8hYUKgXoK8oayJlLnKcRfEYCxWMVE1XagUdVtCJlZT1AU4LXEABW+L1Peg==}
 
   '@types/prop-types@15.7.13':
     resolution: {integrity: sha512-hCZTSvwbzWGvhqxp/RqVqwU999pBf2vp7hzIjiYOsl8wqOmUxkQ6ddw1cV3l8811+kdUFus/q4d1Y3E3SyEifA==}
@@ -1375,6 +1407,9 @@ packages:
     resolution: {integrity: sha512-dq+qelQ9akHpcOl/gUVRTxVIOkAJ1wR3QAvb4RsVjS8oVoFjDGTc679wJYmUmknUF5HwMLOgb5O+a3KxfWapPQ==}
     engines: {node: '>= 0.6'}
 
+  member-service@file:apps/member-service:
+    resolution: {directory: apps/member-service, type: directory}
+
   merge-descriptors@1.0.3:
     resolution: {integrity: sha512-gaNvAS7TZ897/rVaZ0nMtAyxNyi/pdbjbAwUpFQpN70GqnVfOiXpeUUMKRBmzXaSQ8DdTX4/0ms62r2K+hE6mQ==}
 
@@ -1875,6 +1910,10 @@ packages:
   swap-case@1.1.2:
     resolution: {integrity: sha512-BAmWG6/bx8syfc6qXPprof3Mn5vQgf5dwdUNJhsNqU9WdPt5P+ES/wQ5bxfijy8zwZgZZHslC3iAsxsuQMCzJQ==}
 
+  'test@file:':
+    resolution: {directory: '', type: directory}
+    engines: {node: '>=18'}
+
   text-hex@1.0.0:
     resolution: {integrity: sha512-uuVGNWzgJ4yhRaNSiubPY7OjISw4sw4E5Uv0wbjp+OzcbmVU/rsT8ujgcXJhn9ypzsgr5vlzpPqP+MBBKcGvbg==}
 
@@ -2127,6 +2166,9 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
+  zod@3.24.2:
+    resolution: {integrity: sha512-lY7CDW43ECgW9u1TcT3IoXHflywfVqDYze4waEz812jR/bZ8FHDsl7pFQoSZTz5N+2NqRXs8GBwnAwo3ZNxqhQ==}
+
 snapshots:
 
   '@babel/runtime-corejs3@7.26.0':
@@ -2273,21 +2315,21 @@ snapshots:
   '@types/body-parser@1.19.5':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 20.17.6
+      '@types/node': 22.10.5
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 20.17.6
+      '@types/node': 22.10.5
 
   '@types/cors@2.8.17':
     dependencies:
-      '@types/node': 20.17.6
+      '@types/node': 22.10.5
 
   '@types/estree@1.0.6': {}
 
   '@types/express-serve-static-core@5.0.4':
     dependencies:
-      '@types/node': 20.17.6
+      '@types/node': 22.10.5
       '@types/qs': 6.9.17
       '@types/range-parser': 1.2.7
       '@types/send': 0.17.4
@@ -2302,7 +2344,7 @@ snapshots:
   '@types/glob@7.2.0':
     dependencies:
       '@types/minimatch': 5.1.2
-      '@types/node': 20.17.6
+      '@types/node': 22.10.5
 
   '@types/http-errors@2.0.4': {}
 
@@ -2322,6 +2364,10 @@ snapshots:
       undici-types: 6.19.8
 
   '@types/node@22.10.5':
+    dependencies:
+      undici-types: 6.20.0
+
+  '@types/node@22.13.4':
     dependencies:
       undici-types: 6.20.0
 
@@ -2348,17 +2394,17 @@ snapshots:
   '@types/send@0.17.4':
     dependencies:
       '@types/mime': 1.3.5
-      '@types/node': 20.17.6
+      '@types/node': 22.10.5
 
   '@types/serve-static@1.15.7':
     dependencies:
       '@types/http-errors': 2.0.4
-      '@types/node': 20.17.6
+      '@types/node': 22.10.5
       '@types/send': 0.17.4
 
   '@types/through@0.0.33':
     dependencies:
-      '@types/node': 20.17.6
+      '@types/node': 22.10.5
 
   '@types/tinycolor2@1.4.6': {}
 
@@ -3655,6 +3701,18 @@ snapshots:
 
   media-typer@0.3.0: {}
 
+  member-service@file:apps/member-service:
+    dependencies:
+      '@repo/types': link:packages/types
+      cors: 2.8.5
+      dotenv: 16.4.7
+      express: 4.21.2
+      reflect-metadata: 0.2.2
+      tsyringe: 4.8.0
+      winston: 3.17.0
+    transitivePeerDependencies:
+      - supports-color
+
   merge-descriptors@1.0.3: {}
 
   merge-stream@2.0.0: {}
@@ -4235,6 +4293,8 @@ snapshots:
       lower-case: 1.1.4
       upper-case: 1.1.3
 
+  'test@file:': {}
+
   text-hex@1.0.0: {}
 
   through@2.3.8: {}
@@ -4525,3 +4585,5 @@ snapshots:
   yn@3.1.1: {}
 
   yocto-queue@0.1.0: {}
+
+  zod@3.24.2: {}

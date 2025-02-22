@@ -27,8 +27,8 @@ export class Server {
   private setupRoutes() {
     this.app.get("/api", userRouter);
     this.app.get("/api/health", (req: Request, res: Response) => {
-      res.send({ health: "Member Service is Healthy"})
-    })
+      res.send({ health: "Member Service is Healthy" });
+    });
 
     this.app.use((req: Request, res: Response, next: NextFunction) => {
       next(new AppError("Route not found", 404));
