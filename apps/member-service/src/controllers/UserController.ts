@@ -30,11 +30,7 @@ export class UserController {
     res.json({ message: userData });
   };
 
-  public createUser = async (
-    req: Request,
-    res: Response,
-    next: NextFunction
-  ) => {
+  public createUser = async ( req: Request, res: Response, next: NextFunction ) => {
     // zod validation
     // inject to service
     const userData = this.userService.getUser();
